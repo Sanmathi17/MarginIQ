@@ -1,9 +1,8 @@
-import axios from 'axios'
 import { useState } from 'react'
 import { X, TrendingUp, AlertTriangle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Product, Suggestion } from '@/types'
+import { Product} from '@/types'
 import { formatCurrency, formatPercentage, getMarginColor } from '@/lib/utils'
 import { cn } from '@/lib/utils'
 
