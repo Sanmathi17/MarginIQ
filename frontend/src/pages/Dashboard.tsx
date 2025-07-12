@@ -345,7 +345,7 @@ export default function Dashboard() {
       }
     })
     // Sort by most recent
-    return alerts.sort((a, b) => b.time - a.time).slice(0, 5)
+    return alerts.sort((a, b) => b.time.getTime() - a.time.getTime()).slice(0, 5)
   }
 
   useEffect(() => {
