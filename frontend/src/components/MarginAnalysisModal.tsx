@@ -14,7 +14,7 @@ interface MarginAnalysisModalProps {
 }
 
 export default function MarginAnalysisModal({ product, isOpen, onClose }: MarginAnalysisModalProps) {
-  const [suggestions, setSuggestions] = useState<Suggestion[]>([])
+
   const [isSaving, setIsSaving] = useState(false)
 
   // Dynamic AI analysis logic
@@ -87,15 +87,6 @@ export default function MarginAnalysisModal({ product, isOpen, onClose }: Margin
   const handleApplyChanges = async () => {
     setIsSaving(true)
     try {
-      // Only send suggestions that are not pending (i.e., changed)
-      const changed = suggestions.filter(s => s.status !== 'pending')
-      for (const s of changed) {
-        if (s.status === 'approved') {
-          await axios.put(`/api/suggestions/${s.id}/approve`)
-        } else if (s.status === 'rejected') {
-          await axios.put(`/api/suggestions/${s.id}/reject`)
-        }
-      }
       setIsSaving(false)
       onClose()
       // Optionally: show a toast here
