@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { Send, Bot, User, TrendingUp, AlertTriangle, DollarSign } from 'lucide-react'
+import { Send, Bot, TrendingUp, AlertTriangle, DollarSign } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { ChatMessage } from '@/types'

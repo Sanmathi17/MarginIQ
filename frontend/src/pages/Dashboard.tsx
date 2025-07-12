@@ -6,6 +6,7 @@ import { KPIMetric, Product } from '@/types'
 import ProductTable from '@/components/ProductTable'
 import MarginAnalysisModal from '@/components/MarginAnalysisModal'
 import DashboardCharts from '@/components/DashboardCharts'
+import KPICard from '@/components/KPICard'
 import { saveAs } from 'file-saver'
 
 
