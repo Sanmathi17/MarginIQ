@@ -1,73 +1,16 @@
 import axios from 'axios'
 import { useState } from 'react'
-import { X, TrendingUp, TrendingDown, AlertTriangle, CheckCircle, XCircle } from 'lucide-react'
+import { X, TrendingUp, AlertTriangle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Product, Suggestion, RootCause } from '@/types'
-import { formatCurrency, formatPercentage, getMarginColor, getMarginBgColor } from '@/lib/utils'
+import { Product, Suggestion } from '@/types'
+import { formatCurrency, formatPercentage, getMarginColor } from '@/lib/utils'
 import { cn } from '@/lib/utils'
 
 interface MarginAnalysisModalProps {
   product: Product
   isOpen: boolean
   onClose: () => void
-}
-
-// Mock AI analysis data
-const mockAnalysis = {
-  summary: "Margin fell due to 12% increase in import duty from Italy and higher shrink in refrigerated storage at 243 locations.",
-  suggestions: [
-    {
-      id: '1',
-      type: 'price_adjustment' as const,
-      title: 'Raise price from $3.98 → $4.28',
-      description: 'Increase price by 7.5% to maintain target margin',
-      impact: 0.30,
-      confidence: 0.85,
-      action: 'price_adjustment',
-      status: 'pending' as const
-    },
-    {
-      id: '2',
-      type: 'supplier_change' as const,
-      title: 'Use domestic supplier (save $0.40/unit)',
-      description: 'Switch to US-based supplier to avoid tariff impact',
-      impact: 0.40,
-      confidence: 0.92,
-      action: 'supplier_change',
-      status: 'pending' as const
-    },
-    {
-      id: '3',
-      type: 'promotion_adjustment' as const,
-      title: 'Remove current promotion',
-      description: 'Current promotion is hurting margin by 2.1%',
-      impact: 0.08,
-      confidence: 0.78,
-      action: 'promotion_removal',
-      status: 'pending' as const
-    }
-  ],
-  rootCauses: [
-    {
-      factor: 'Import Tariffs',
-      impact: 0.8,
-      description: '12% increase in olive oil import duties from Italy',
-      trend: 'increasing' as const
-    },
-    {
-      factor: 'Shrink Rate',
-      impact: 1.2,
-      description: 'Higher than average shrink in refrigerated storage',
-      trend: 'stable' as const
-    },
-    {
-      factor: 'Supplier Costs',
-      impact: 0.5,
-      description: 'Supplier increased base cost by 3.2%',
-      trend: 'increasing' as const
-    }
-  ]
 }
 
 export default function MarginAnalysisModal({ product, isOpen, onClose }: MarginAnalysisModalProps) {
@@ -140,14 +83,6 @@ export default function MarginAnalysisModal({ product, isOpen, onClose }: Margin
   const rootCauses = getRootCauses(product);
   const summary = getSummary(product, rootCauses);
   const aiSuggestions = getSuggestions(product);
-
-  const handleSuggestionAction = (suggestionId: string, action: 'approve' | 'reject') => {
-    setSuggestions(prev => prev.map(s => 
-      s.id === suggestionId 
-        ? { ...s, status: action === 'approve' ? 'approved' : 'rejected' }
-        : s
-    ))
-  }
 
   const handleApplyChanges = async () => {
     setIsSaving(true)

@@ -31,19 +31,6 @@ export default function KPICard({ kpi }: KPICardProps) {
     }
   }
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'positive':
-        return 'text-green-600'
-      case 'negative':
-        return 'text-red-600'
-      case 'warning':
-        return 'text-yellow-600'
-      default:
-        return 'text-gray-600'
-    }
-  }
-
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { CheckCircle, XCircle, Clock, TrendingUp, AlertTriangle } from 'lucide-react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Suggestion } from '@/types'
 import { formatCurrency } from '@/lib/utils'
