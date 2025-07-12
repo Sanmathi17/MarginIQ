@@ -25,6 +25,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "date-fns": "^2.30.0",
+    "file-saver": "^2.0.5",
     "lucide-react": "^0.294.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -35,6 +36,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@types/file-saver": "^2.0.7",
     "@types/node": "^24.0.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
